@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ConsoleEFDescriminator.Context;
+using ConsoleEFDescriminator.Models;
+using System;
+using System.Linq;
 
 namespace ConsoleEFDescriminator
 {
@@ -6,8 +9,48 @@ namespace ConsoleEFDescriminator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-           
+            using (var db = new ImmobileContext())
+            {
+                var apartamento = new Residential()
+                {
+                    ImmobileId = Guid.NewGuid(),
+                    Type = "Apartamento"
+                };
+
+                var casa = new Residential()
+                {
+                    ImmobileId = Guid.NewGuid(),
+                    Type = "Casa"
+                };
+                var fazenda = new Residential()
+                {
+                    ImmobileId = Guid.NewGuid(),
+                    Type = "Fazenda/Sitio/Chacara"
+                };
+                var lote = new Residential()
+                {
+                    ImmobileId = Guid.NewGuid(),
+                    Type = "Lote/Terreno"
+                };
+
+
+                //db.Residentials.Add(apartamento);
+                //db.Residentials.Add(casa);
+                //db.Residentials.Add(fazenda);
+                //db.Residentials.Add(lote);
+
+                Console.WriteLine("Digite o Id");
+                var id = Guid.Parse(Console.ReadLine());
+
+                //identificando o tipo de imovel
+                var tipo = from t in db.Immobiles where t.ImmobileId == id select t.GetType().Name;
+
+                Console.WriteLine("Resultado: {0}", tipo.FirstOrDefault());
+                Console.ReadKey();
+
+                // db.SaveChanges();
+
+            }
         }
     }
 }
