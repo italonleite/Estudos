@@ -11,33 +11,33 @@ namespace ConsoleEFDescriminator
         {
             using (var db = new ImmobileContext())
             {
-                var apartamento = new Residential()
+                var consultorio = new Commercial()
                 {
                     ImmobileId = Guid.NewGuid(),
-                    Type = "Apartamento"
+                    Type = "Consultorio"
                 };
 
-                var casa = new Residential()
+                var garagem = new Commercial()
+                {
+                    ImmobileId = Guid.NewGuid(),
+                    Type = "Garagem"
+                };
+                var casa = new Commercial()
                 {
                     ImmobileId = Guid.NewGuid(),
                     Type = "Casa"
                 };
-                var fazenda = new Residential()
-                {
-                    ImmobileId = Guid.NewGuid(),
-                    Type = "Fazenda/Sitio/Chacara"
-                };
-                var lote = new Residential()
+                var lote = new Commercial()
                 {
                     ImmobileId = Guid.NewGuid(),
                     Type = "Lote/Terreno"
                 };
 
+                //db.Commercials.Add(consultorio);
+                //db.Commercials.Add(garagem);
+                //db.Commercials.Add(casa);
+                //db.Commercials.Add(lote);
 
-                //db.Residentials.Add(apartamento);
-                //db.Residentials.Add(casa);
-                //db.Residentials.Add(fazenda);
-                //db.Residentials.Add(lote);
 
                 Console.WriteLine("Digite o Id");
                 var id = Guid.Parse(Console.ReadLine());
@@ -48,7 +48,7 @@ namespace ConsoleEFDescriminator
                 Console.WriteLine("Resultado: {0}", tipo.FirstOrDefault());
                 Console.ReadKey();
 
-                // db.SaveChanges();
+                //  db.SaveChanges();
 
             }
         }
