@@ -15,7 +15,9 @@ namespace ConsoleEFDescriminator.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=ITALO\SQLNOVO; Database=EFDiscriminator;Trusted_Connection=True; MultipleActiveResultSets=True");
+            optionsBuilder.UseSqlServer(@"Server=DEV_ITALOLEITE\SQLEXPRESS;Database=EFDiscriminatorImovel;Trusted_Connection=True;MultipleActiveResultSets=true");
+
+            //optionsBuilder.UseSqlServer(@"Server=ITALO\SQLNOVO; Database=EFDiscriminator;Trusted_Connection=True; MultipleActiveResultSets=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
